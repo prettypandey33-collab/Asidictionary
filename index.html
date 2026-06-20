@@ -924,12 +924,6 @@
 </div>
 
 <script>
-    // ==================== COMPLETE DICTIONARY DATA (JSON STRUCTURE) ====================
-    // Organized by language, then by category
-    // Each language contains 20+ categories with substantial word lists
-    // Total words: Chinese ~5000+, Japanese ~5000+, Korean ~5000+, Thai ~5000+
-    // Structure designed to be expanded to 20,000+ words per language
-
     const DICTIONARY = {
         chinese: {
             name: "Chinese",
@@ -942,399 +936,625 @@
                     name: "Greetings & Basics",
                     icon: "👋",
                     words: [
-                        { word: "你好", roman: "nǐ hǎo", meaning: "Hello / Hi",
-                            example: "你好！今天过得怎么样？" },
-                        { word: "谢谢", roman: "xiè xiè", meaning: "Thank you",
-                        example: "谢谢你的帮助。" },
-                        { word: "再见", roman: "zài jiàn", meaning: "Goodbye / See you again",
-                            example: "明天见，再见！" },
-                        { word: "对不起", roman: "duì bu qǐ", meaning: "Sorry / Excuse me",
-                            example: "对不起，我来晚了。" },
-                        { word: "没关系", roman: "méi guān xi", meaning: "It's okay / No problem",
-                            example: "没关系，别担心。" },
-                        { word: "早上好", roman: "zǎo shang hǎo", meaning: "Good morning",
-                            example: "早上好！今天天气真好。" },
-                        { word: "晚安", roman: "wǎn ān", meaning: "Good night",
-                        example: "晚安，做个好梦。" },
-                        { word: "请", roman: "qǐng", meaning: "Please",
-                        example: "请坐，别客气。" },
-                        { word: "不客气", roman: "bú kè qì", meaning: "You're welcome",
-                            example: "不客气，随时找我。" },
-                        { word: "你好吗", roman: "nǐ hǎo ma", meaning: "How are you?",
-                            example: "你好吗？我很好。" },
-                        { word: "我很好", roman: "wǒ hěn hǎo", meaning: "I'm fine / I'm very well",
-                            example: "谢谢，我很好。" },
-                        { word: "欢迎", roman: "huān yíng", meaning: "Welcome",
-                        example: "欢迎来到中国！" },
-                        { word: "请问", roman: "qǐng wèn", meaning: "May I ask... / Excuse me",
-                            example: "请问，这里怎么走？" },
-                        { word: "慢慢来", roman: "màn màn lái", meaning: "Take it easy / Slowly",
-                            example: "别急，慢慢来。" },
-                        { word: "辛苦了", roman: "xīn kǔ le", meaning: "You've worked hard / Thank you for your effort",
-                            example: "今天辛苦了！" },
+                        { word: "你好", roman: "nǐ hǎo", meaning: "Hello / Hi", example: "你好！今天过得怎么样？" },
+                        { word: "谢谢", roman: "xiè xiè", meaning: "Thank you", example: "谢谢你的帮助。" },
+                        { word: "再见", roman: "zài jiàn", meaning: "Goodbye", example: "明天见，再见！" },
+                        { word: "对不起", roman: "duì bu qǐ", meaning: "Sorry / Excuse me", example: "对不起，我来晚了。" },
+                        { word: "没关系", roman: "méi guān xi", meaning: "It's okay", example: "没关系，别担心。" },
                     ]
                 },
                 numbers: {
                     name: "Numbers",
                     icon: "🔢",
                     words: [
-                        { word: "一", roman: "yī", meaning: "One (1)",
-                        example: "我有一本书。" },
-                        { word: "二", roman: "èr", meaning: "Two (2)",
-                        example: "我有两个朋友。" },
-                        { word: "三", roman: "sān", meaning: "Three (3)",
-                        example: "三只小猫。" },
-                        { word: "四", roman: "sì", meaning: "Four (4)",
-                        example: "四季如春。" },
-                        { word: "五", roman: "wǔ", meaning: "Five (5)",
-                        example: "五星级酒店。" },
-                        { word: "六", roman: "liù", meaning: "Six (6)",
-                        example: "六六大顺。" },
-                        { word: "七", roman: "qī", meaning: "Seven (7)",
-                        example: "七色彩虹。" },
-                        { word: "八", roman: "bā", meaning: "Eight (8)",
-                        example: "八方来财。" },
-                        { word: "九", roman: "jiǔ", meaning: "Nine (9)",
-                        example: "九牛一毛。" },
-                        { word: "十", roman: "shí", meaning: "Ten (10)",
-                        example: "十全十美。" },
-                        { word: "百", roman: "bǎi", meaning: "Hundred (100)",
-                        example: "一百块钱。" },
-                        { word: "千", roman: "qiān", meaning: "Thousand (1,000)",
-                        example: "五千元。" },
-                        { word: "万", roman: "wàn", meaning: "Ten thousand (10,000)",
-                        example: "一万块。" },
-                        { word: "零", roman: "líng", meaning: "Zero (0)",
-                        example: "零下十度。" },
+                        { word: "一", roman: "yī", meaning: "One", example: "我有一本书。" },
+                        { word: "二", roman: "èr", meaning: "Two", example: "我有两个朋友。" },
+                        { word: "三", roman: "sān", meaning: "Three", example: "三只小猫。" },
+                        { word: "四", roman: "sì", meaning: "Four", example: "四季如春。" },
+                        { word: "五", roman: "wǔ", meaning: "Five", example: "五星级酒店。" },
+                    ]
+                },
+                family: {
+                    name: "Family",
+                    icon: "👨‍👩‍👧‍👦",
+                    words: [
+                        { word: "母亲", roman: "mǔ qīn", meaning: "Mother", example: "我的母亲很善良。" },
+                        { word: "父亲", roman: "fù qīn", meaning: "Father", example: "父亲正在工作。" },
+                        { word: "姐姐", roman: "jiě jiě", meaning: "Older sister", example: "我的姐姐很聪明。" },
+                        { word: "哥哥", roman: "gē ge", meaning: "Older brother", example: "哥哥在读大学。" },
+                        { word: "弟弟", roman: "dì di", meaning: "Younger brother", example: "弟弟喜欢踢球。" },
+                    ]
+                },
+                food: {
+                    name: "Food & Drinks",
+                    icon: "🍜",
+                    words: [
+                        { word: "水", roman: "shuǐ", meaning: "Water", example: "我要喝水。" },
+                        { word: "饭", roman: "fàn", meaning: "Rice / Meal", example: "我们去吃饭。" },
+                        { word: "苹果", roman: "píng guǒ", meaning: "Apple", example: "这个苹果很甜。" },
+                        { word: "茶", roman: "chá", meaning: "Tea", example: "你要喝茶吗？" },
+                        { word: "米", roman: "mǐ", meaning: "Rice", example: "米饭很好吃。" },
+                    ]
+                },
+                colors: {
+                    name: "Colors",
+                    icon: "🎨",
+                    words: [
+                        { word: "红", roman: "hóng", meaning: "Red", example: "这件红衣服很漂亮。" },
+                        { word: "蓝", roman: "lán", meaning: "Blue", example: "天空是蓝色的。" },
+                        { word: "黄", roman: "huáng", meaning: "Yellow", example: "向日葵是黄色的。" },
+                        { word: "绿", roman: "lǜ", meaning: "Green", example: "树叶是绿色的。" },
+                        { word: "黑", roman: "hēi", meaning: "Black", example: "我的鞋是黑色的。" },
+                    ]
+                },
+                animals: {
+                    name: "Animals",
+                    icon: "🐾",
+                    words: [
+                        { word: "猫", roman: "māo", meaning: "Cat", example: "那只猫很可爱。" },
+                        { word: "狗", roman: "gǒu", meaning: "Dog", example: "我的狗很聪明。" },
+                        { word: "鸟", roman: "niǎo", meaning: "Bird", example: "窗外有一只鸟。" },
+                        { word: "鱼", roman: "yú", meaning: "Fish", example: "鱼在水里游泳。" },
+                        { word: "熊", roman: "xióng", meaning: "Bear", example: "熊很强壮。" },
+                    ]
+                },
+                body: {
+                    name: "Body Parts",
+                    icon: "💪",
+                    words: [
+                        { word: "头", roman: "tóu", meaning: "Head", example: "我的头有点疼。" },
+                        { word: "眼睛", roman: "yǎn jing", meaning: "Eyes", example: "她的眼睛很漂亮。" },
+                        { word: "手", roman: "shǒu", meaning: "Hand", example: "请举起你的手。" },
+                        { word: "脚", roman: "jiǎo", meaning: "Foot", example: "我的脚有点疼。" },
+                        { word: "心", roman: "xīn", meaning: "Heart", example: "用心去感受。" },
+                    ]
+                },
+                weather: {
+                    name: "Weather",
+                    icon: "☀️",
+                    words: [
+                        { word: "天气", roman: "tiān qì", meaning: "Weather", example: "今天天气很好。" },
+                        { word: "太阳", roman: "tài yáng", meaning: "Sun", example: "太阳升起来了。" },
+                        { word: "雨", roman: "yǔ", meaning: "Rain", example: "下雨了，很冷。" },
+                        { word: "雪", roman: "xuě", meaning: "Snow", example: "冬天会下雪。" },
+                        { word: "风", roman: "fēng", meaning: "Wind", example: "今天风很大。" },
+                    ]
+                },
+                school: {
+                    name: "School & Study",
+                    icon: "📚",
+                    words: [
+                        { word: "书", roman: "shū", meaning: "Book", example: "我喜欢读书。" },
+                        { word: "笔", roman: "bǐ", meaning: "Pen", example: "我的笔掉了。" },
+                        { word: "老师", roman: "lǎo shī", meaning: "Teacher", example: "老师在讲课。" },
+                        { word: "学生", roman: "xué sheng", meaning: "Student", example: "学生们在做功课。" },
+                        { word: "学校", roman: "xué xiào", meaning: "School", example: "我在这个学校读书。" },
+                    ]
+                },
+                time: {
+                    name: "Time & Seasons",
+                    icon: "⏰",
+                    words: [
+                        { word: "时间", roman: "shí jiān", meaning: "Time", example: "时间过得很快。" },
+                        { word: "春天", roman: "chun tiān", meaning: "Spring", example: "春天花开了。" },
+                        { word: "夏天", roman: "xià tiān", meaning: "Summer", example: "夏天很热。" },
+                        { word: "秋天", roman: "qiū tiān", meaning: "Autumn", example: "秋天到了。" },
+                        { word: "冬天", roman: "dōng tiān", meaning: "Winter", example: "冬天很冷。" },
+                    ]
+                }
+            }
+        },
+        japanese: {
+            name: "Japanese",
+            nativeName: "日本語",
+            flag: "🇯🇵",
+            color: "japanese",
+            romanLabel: "Romaji",
+            categories: {
+                greetings: {
+                    name: "Greetings",
+                    icon: "👋",
+                    words: [
+                        { word: "こんにちは", roman: "Konnichiha", meaning: "Hello", example: "こんにちは、元気ですか。" },
+                        { word: "ありがとう", roman: "Arigatou", meaning: "Thank you", example: "ありがとうございます。" },
+                        { word: "さようなら", roman: "Sayounara", meaning: "Goodbye", example: "また明日ね。" },
+                        { word: "すみません", roman: "Sumimasen", meaning: "Excuse me", example: "すみません、時間ですか。" },
+                        { word: "おはよう", roman: "Ohayou", meaning: "Good morning", example: "おはようございます。" },
+                    ]
+                },
+                numbers: {
+                    name: "Numbers",
+                    icon: "🔢",
+                    words: [
+                        { word: "一", roman: "ichi", meaning: "One", example: "1つください。" },
+                        { word: "二", roman: "ni", meaning: "Two", example: "2つのりんご。" },
+                        { word: "三", roman: "san", meaning: "Three", example: "3歳です。" },
+                        { word: "四", roman: "shi/yon", meaning: "Four", example: "4月生まれです。" },
+                        { word: "五", roman: "go", meaning: "Five", example: "5時です。" },
+                    ]
+                },
+                food: {
+                    name: "Food",
+                    icon: "🍱",
+                    words: [
+                        { word: "ご飯", roman: "gohan", meaning: "Rice / Meal", example: "ご飯を食べましょう。" },
+                        { word: "水", roman: "mizu", meaning: "Water", example: "水をください。" },
+                        { word: "寿司", roman: "sushi", meaning: "Sushi", example: "寿司が好きです。" },
+                        { word: "味噌汁", roman: "misoshiru", meaning: "Miso soup", example: "毎日味噌汁を飲みます。" },
+                        { word: "天ぷら", roman: "tenpura", meaning: "Tempura", example: "天ぷらが美味しい。" },
+                    ]
+                },
+                family: {
+                    name: "Family",
+                    icon: "👨‍👩‍👧‍👦",
+                    words: [
+                        { word: "母", roman: "haha", meaning: "Mother", example: "母が来ました。" },
+                        { word: "父", roman: "chichi", meaning: "Father", example: "父は会社へ行きました。" },
+                        { word: "姉", roman: "ane", meaning: "Older sister", example: "姉は学生です。" },
+                        { word: "兄", roman: "ani", meaning: "Older brother", example: "兄は仕事をしています。" },
+                        { word: "妹", roman: "imouto", meaning: "Younger sister", example: "妹は7歳です。" },
+                    ]
+                },
+                colors: {
+                    name: "Colors",
+                    icon: "🎨",
+                    words: [
+                        { word: "赤", roman: "aka", meaning: "Red", example: "赤い花。" },
+                        { word: "青", roman: "ao", meaning: "Blue", example: "青い空。" },
+                        { word: "黄色", roman: "kiiro", meaning: "Yellow", example: "黄色いバナナ。" },
+                        { word: "緑", roman: "midori", meaning: "Green", example: "緑の木。" },
+                        { word: "黒", roman: "kuro", meaning: "Black", example: "黒い靴。" },
+                    ]
+                },
+                animals: {
+                    name: "Animals",
+                    icon: "🐾",
+                    words: [
+                        { word: "猫", roman: "neko", meaning: "Cat", example: "猫がかわいい。" },
+                        { word: "犬", roman: "inu", meaning: "Dog", example: "犬は忠実です。" },
+                        { word: "鳥", roman: "tori", meaning: "Bird", example: "鳥が飛びました。" },
+                        { word: "魚", roman: "sakana", meaning: "Fish", example: "金魚を飼っています。" },
+                        { word: "象", roman: "zou", meaning: "Elephant", example: "象は大きいです。" },
+                    ]
+                },
+                weather: {
+                    name: "Weather",
+                    icon: "☀️",
+                    words: [
+                        { word: "天気", roman: "tenki", meaning: "Weather", example: "今日の天気はいいです。" },
+                        { word: "太陽", roman: "taiyou", meaning: "Sun", example: "太陽が出ています。" },
+                        { word: "雨", roman: "ame", meaning: "Rain", example: "雨が降っています。" },
+                        { word: "雪", roman: "yuki", meaning: "Snow", example: "雪が積もりました。" },
+                        { word: "風", roman: "kaze", meaning: "Wind", example: "風が強いです。" },
+                    ]
+                },
+                school: {
+                    name: "School",
+                    icon: "📚",
+                    words: [
+                        { word: "本", roman: "hon", meaning: "Book", example: "本を読みます。" },
+                        { word: "ペン", roman: "pen", meaning: "Pen", example: "ペンを貸してください。" },
+                        { word: "先生", roman: "sensei", meaning: "Teacher", example: "先生が来ました。" },
+                        { word: "学生", roman: "gakusei", meaning: "Student", example: "学生になりました。" },
+                        { word: "学校", roman: "gakkou", meaning: "School", example: "学校へ行きます。" },
+                    ]
+                },
+                time: {
+                    name: "Time",
+                    icon: "⏰",
+                    words: [
+                        { word: "時間", roman: "jikan", meaning: "Time", example: "時間がありません。" },
+                        { word: "春", roman: "haru", meaning: "Spring", example: "春が来ました。" },
+                        { word: "夏", roman: "natsu", meaning: "Summer", example: "夏は暑いです。" },
+                        { word: "秋", roman: "aki", meaning: "Autumn", example: "秋は涼しい。" },
+                        { word: "冬", roman: "fuyu", meaning: "Winter", example: "冬は寒いです。" },
+                    ]
+                }
+            }
+        },
+        korean: {
+            name: "Korean",
+            nativeName: "한국어",
+            flag: "🇰🇷",
+            color: "korean",
+            romanLabel: "Romanization",
+            categories: {
+                greetings: {
+                    name: "Greetings",
+                    icon: "👋",
+                    words: [
+                        { word: "안녕하세요", roman: "Annyeong haseyo", meaning: "Hello (formal)", example: "안녕하세요, 처음 뵙겠습니다." },
+                        { word: "고마워요", roman: "Gomawo", meaning: "Thank you (casual)", example: "도와줘서 고마워���." },
+                        { word: "안녕", roman: "Annyeong", meaning: "Goodbye (casual)", example: "내일 봐. 안녕!" },
+                        { word: "죄송합니다", roman: "Joesonghabnida", meaning: "I'm sorry (formal)", example: "늦어서 죄송합니다." },
+                        { word: "좋은 아침", roman: "Joeun achim", meaning: "Good morning", example: "좋은 아침입니다." },
+                    ]
+                },
+                numbers: {
+                    name: "Numbers",
+                    icon: "🔢",
+                    words: [
+                        { word: "하나", roman: "Hana", meaning: "One", example: "하나 줄래요." },
+                        { word: "둘", roman: "Dul", meaning: "Two", example: "둘 다 주세요." },
+                        { word: "셋", roman: "Set", meaning: "Three", example: "셋을 원합니다." },
+                        { word: "넷", roman: "Net", meaning: "Four", example: "넷 개가 필요해요." },
+                        { word: "다섯", roman: "Daseot", meaning: "Five", example: "다섯시에 만나요." },
+                    ]
+                },
+                food: {
+                    name: "Food",
+                    icon: "🍜",
+                    words: [
+                        { word: "밥", roman: "Bap", meaning: "Rice / Meal", example: "밥 먹었어요?" },
+                        { word: "물", roman: "Mul", meaning: "Water", example: "물 한 잔 주세요." },
+                        { word: "김밥", roman: "Kimbap", meaning: "Kimbap", example: "김밥이 맛있어요." },
+                        { word: "라면", roman: "Ramyeon", meaning: "Ramen", example: "라면 먹고 싶어요." },
+                        { word: "떡볶이", roman: "Tteokbokki", meaning: "Tteokbokki", example: "떡볶이 맛있다." },
+                    ]
+                },
+                family: {
+                    name: "Family",
+                    icon: "👨‍👩‍👧‍👦",
+                    words: [
+                        { word: "엄마", roman: "Eomma", meaning: "Mother", example: "엄마가 왔어요." },
+                        { word: "아빠", roman: "Appa", meaning: "Father", example: "아빠는 일해요." },
+                        { word: "언니", roman: "Eonni", meaning: "Older sister (from girl)", example: "언니랑 같이 가요." },
+                        { word: "오빠", roman: "Oppa", meaning: "Older brother (from girl)", example: "오빠 도와줘." },
+                        { word: "동생", roman: "Dongsaeng", meaning: "Younger sibling", example: "동생이 있어요." },
+                    ]
+                },
+                colors: {
+                    name: "Colors",
+                    icon: "🎨",
+                    words: [
+                        { word: "빨강", roman: "Ppalgac", meaning: "Red", example: "빨간색 옷." },
+                        { word: "파랑", roman: "Parang", meaning: "Blue", example: "파란 하늘." },
+                        { word: "노랑", roman: "Norang", meaning: "Yellow", example: "노란 꽃." },
+                        { word: "초록", roman: "Chorok", meaning: "Green", example: "초록 나무." },
+                        { word: "검정", roman: "Geomjung", meaning: "Black", example: "검은 신발." },
+                    ]
+                },
+                animals: {
+                    name: "Animals",
+                    icon: "🐾",
+                    words: [
+                        { word: "고양이", roman: "Goyangi", meaning: "Cat", example: "고양이가 귀여워요." },
+                        { word: "개", roman: "Gae", meaning: "Dog", example: "개를 키워요." },
+                        { word: "새", roman: "Sae", meaning: "Bird", example: "새가 날아요." },
+                        { word: "물고기", roman: "Mulgogi", meaning: "Fish", example: "물고기가 헤엄쳐요." },
+                        { word: "곰", roman: "Gom", meaning: "Bear", example: "곰이 커요." },
+                    ]
+                },
+                weather: {
+                    name: "Weather",
+                    icon: "☀️",
+                    words: [
+                        { word: "날씨", roman: "Nalssi", meaning: "Weather", example: "오늘 날씨 좋아요." },
+                        { word: "햇빛", roman: "Haetbit", meaning: "Sunlight", example: "햇빛이 따뜻해요." },
+                        { word: "비", roman: "Bi", meaning: "Rain", example: "비가 내려요." },
+                        { word: "눈", roman: "Nun", meaning: "Snow", example: "눈이 왔어요." },
+                        { word: "바람", roman: "Baram", meaning: "Wind", example: "바람이 부네요." },
+                    ]
+                },
+                school: {
+                    name: "School",
+                    icon: "📚",
+                    words: [
+                        { word: "책", roman: "Chaek", meaning: "Book", example: "책을 읽어요." },
+                        { word: "펜", roman: "Pen", meaning: "Pen", example: "펜을 빌려줘." },
+                        { word: "선생님", roman: "Seonsaengnim", meaning: "Teacher", example: "선생님이 왔어요." },
+                        { word: "학생", roman: "Haksaeng", meaning: "Student", example: "학생입니다." },
+                        { word: "학교", roman: "Hakgyo", meaning: "School", example: "학교에 가요." },
+                    ]
+                },
+                time: {
+                    name: "Time",
+                    icon: "⏰",
+                    words: [
+                        { word: "시간", roman: "Sigan", meaning: "Time", example: "시간이 없어요." },
+                        { word: "봄", roman: "Bom", meaning: "Spring", example: "봄이 왔어요." },
+                        { word: "여름", roman: "Yeoreum", meaning: "Summer", example: "여름은 더워요." },
+                        { word: "가을", roman: "Gaeul", meaning: "Autumn", example: "가을은 좋아요." },
+                        { word: "겨울", roman: "Gyeoul", meaning: "Winter", example: "겨울은 추워요." },
+                    ]
+                }
+            }
+        },
+        thai: {
+            name: "Thai",
+            nativeName: "ไทย",
+            flag: "🇹🇭",
+            color: "thai",
+            romanLabel: "RTGS",
+            categories: {
+                greetings: {
+                    name: "Greetings",
+                    icon: "👋",
+                    words: [
+                        { word: "สวัสดี", roman: "Sawasdee", meaning: "Hello / Goodbye", example: "สวัสดีครับ" },
+                        { word: "ขอบคุณ", roman: "Khob khun", meaning: "Thank you", example: "ขอ��คุณมากครับ" },
+                        { word: "ขอโทษ", roman: "Kho thos", meaning: "I'm sorry", example: "ขอโทษนะครับ" },
+                        { word: "ชื่อ", roman: "Chue", meaning: "Name", example: "ชื่อฉันคือสมชาย" },
+                        { word: "ยินดี", roman: "Yindi", meaning: "Pleased to meet you", example: "ยินดีที่ได้รู้จัก" },
+                    ]
+                },
+                numbers: {
+                    name: "Numbers",
+                    icon: "🔢",
+                    words: [
+                        { word: "หนึ่ง", roman: "Nueng", meaning: "One", example: "หนึ่งชิ้น" },
+                        { word: "สอง", roman: "Song", meaning: "Two", example: "สองคน" },
+                        { word: "สาม", roman: "Sam", meaning: "Three", example: "สามวัน" },
+                        { word: "สี่", roman: "Si", meaning: "Four", example: "สี่โมง" },
+                        { word: "ห้า", roman: "Ha", meaning: "Five", example: "ห้าบาท" },
+                    ]
+                },
+                food: {
+                    name: "Food",
+                    icon: "🍜",
+                    words: [
+                        { word: "ข้าว", roman: "Khao", meaning: "Rice", example: "กินข้าวหรือเปล่า" },
+                        { word: "น้ำ", roman: "Nam", meaning: "Water", example: "ดื่มน้ำเย็น" },
+                        { word: "ผัดไทย", roman: "Pad thai", meaning: "Pad Thai", example: "ผัดไทยอร่อย" },
+                        { word: "ต้มยำ", roman: "Tom yam", meaning: "Tom Yam soup", example: "ต้มยำกุ้ง" },
+                        { word: "สลัด", roman: "Salat", meaning: "Salad", example: "สลัดสดชื่น" },
+                    ]
+                },
+                family: {
+                    name: "Family",
+                    icon: "👨‍👩‍👧‍👦",
+                    words: [
+                        { word: "แม่", roman: "Mae", meaning: "Mother", example: "แม่ของฉัน" },
+                        { word: "พ่อ", roman: "Pho", meaning: "Father", example: "พ่อไปทำงาน" },
+                        { word: "姐", roman: "Phee chai", meaning: "Older sister", example: "พี่สาวของฉัน" },
+                        { word: "พี่ชาย", roman: "Phi chai", meaning: "Older brother", example: "พี่ชายอยู่บ้าน" },
+                        { word: "น้องสาว", roman: "Nong sao", meaning: "Younger sister", example: "น้องสาววัยสิบหก" },
+                    ]
+                },
+                colors: {
+                    name: "Colors",
+                    icon: "🎨",
+                    words: [
+                        { word: "แดง", roman: "Daeng", meaning: "Red", example: "สีแดง" },
+                        { word: "ฟ้า", roman: "Fa", meaning: "Blue", example: "ท้องฟ้า" },
+                        { word: "เหลือง", roman: "Lueang", meaning: "Yellow", example: "สีเหลือง" },
+                        { word: "เขียว", roman: "Khiao", meaning: "Green", example: "หญ้าเขียว" },
+                        { word: "ดำ", roman: "Dam", meaning: "Black", example: "สีดำ" },
+                    ]
+                },
+                animals: {
+                    name: "Animals",
+                    icon: "🐾",
+                    words: [
+                        { word: "แมว", roman: "Maew", meaning: "Cat", example: "แมวของฉัน" },
+                        { word: "หมา", roman: "Maa", meaning: "Dog", example: "หมาเห่า" },
+                        { word: "นก", roman: "Nok", meaning: "Bird", example: "นกร้องเพลง" },
+                        { word: "ปลา", roman: "Pla", meaning: "Fish", example: "ปลาว่ายน้ำ" },
+                        { word: "ช้าง", roman: "Chang", meaning: "Elephant", example: "ช้างที่สวนสัตว์" },
+                    ]
+                },
+                weather: {
+                    name: "Weather",
+                    icon: "☀️",
+                    words: [
+                        { word: "อากาศ", roman: "Akhat", meaning: "Weather", example: "อากาศดีมาก" },
+                        { word: "ดวงอาทิตย์", roman: "Duang athit", meaning: "Sun", example: "ดวงอาทิตย์ขึ้น" },
+                        { word: "ฝน", roman: "Fon", meaning: "Rain", example: "ฝนตกมาก" },
+                        { word: "หิมะ", roman: "Hima", meaning: "Snow", example: "หิมะติดพื้น" },
+                        { word: "ลม", roman: "Lom", meaning: "Wind", example: "ลมพัดแรง" },
+                    ]
+                },
+                school: {
+                    name: "School",
+                    icon: "📚",
+                    words: [
+                        { word: "หนังสือ", roman: "Nangsue", meaning: "Book", example: "อ่านหนังสือ" },
+                        { word: "ปากกา", roman: "Pakka", meaning: "Pen", example: "เอาปากกามา" },
+                        { word: "ครู", roman: "Kru", meaning: "Teacher", example: "ครูสอน" },
+                        { word: "นักเรียน", roman: "Nak rian", meaning: "Student", example: "นักเรียนขยัน" },
+                        { word: "โรงเรียน", roman: "Rongraian", meaning: "School", example: "ไปโรงเรียน" },
+                    ]
+                },
+                time: {
+                    name: "Time",
+                    icon: "⏰",
+                    words: [
+                        { word: "เวลา", roman: "Welaa", meaning: "Time", example: "บอกเวลาให้ฉัน" },
+                        { word: "ฤดูใบไม้ผลิ", roman: "Reudubaimaipon", meaning: "Spring", example: "ฤดูใบไม้ผลิมาแล้ว" },
+                        { word: "ฤดูร้อน", roman: "Reuduroin", meaning: "Summer", example: "ฤดูร้อนร้อนมาก" },
+                        { word: "ฤดูใบไม้ร่วง", roman: "Reedubamaiwang", meaning: "Autumn", example: "ฤดูใบไม้ร่วง" },
+                        { word: "ฤดูหนาว", roman: "Reudunao", meaning: "Winter", example: "ฤดูหนาวหนาว" },
                     ]
                 }
             }
         }
     };
 
-    // ==================== APP STATE & INITIALIZATION ====================
+    // ==================== JAVASCRIPT CODE ====================
     let currentLang = 'chinese';
+    let allWords = [];
+    let savedWords = [];
     let currentCategory = null;
-    let searchQuery = '';
-    let savedWords = new Set();
-    let xpPoints = 0;
-    let streakCount = 7;
 
-    // Initialize app
-    document.addEventListener('DOMContentLoaded', () => {
-        loadState();
-        initializeApp();
+    function initApp() {
+        renderLanguageTabs();
+        loadLanguage('chinese');
         setupEventListeners();
-        renderLanguage();
-    });
+        generateParticles();
+    }
 
-    // ==================== STATE MANAGEMENT ====================
-    function loadState() {
-        const savedData = localStorage.getItem('linguaquestData');
-        if (savedData) {
-            const data = JSON.parse(savedData);
-            savedWords = new Set(data.savedWords || []);
-            xpPoints = data.xpPoints || 0;
-            streakCount = data.streakCount || 7;
+    function renderLanguageTabs() {
+        const container = document.getElementById('langTabs');
+        container.innerHTML = '';
+        Object.keys(DICTIONARY).forEach(lang => {
+            const langData = DICTIONARY[lang];
+            const button = document.createElement('button');
+            button.className = `lang-tab ${langData.color} ${lang === 'chinese' ? 'active' : ''}`;
+            button.setAttribute('data-lang', lang);
+            button.innerHTML = `<span class="lang-emoji">${langData.flag}</span> ${langData.nativeName} ${langData.name}`;
+            button.addEventListener('click', () => switchLanguage(lang));
+            container.appendChild(button);
+        });
+    }
+
+    function switchLanguage(lang) {
+        currentLang = lang;
+        currentCategory = null;
+        document.querySelectorAll('.lang-tab').forEach(t => t.classList.remove('active'));
+        document.querySelector(`[data-lang="${lang}"]`).classList.add('active');
+        loadLanguage(lang);
+    }
+
+    function loadLanguage(lang) {
+        const langData = DICTIONARY[lang];
+        allWords = [];
+        Object.keys(langData.categories).forEach(catKey => {
+            allWords.push(...langData.categories[catKey].words.map(w => ({...w, category: langData.categories[catKey].name})));
+        });
+        renderCategories();
+        renderWords(allWords);
+        updateStats();
+    }
+
+    function renderCategories() {
+        const langData = DICTIONARY[currentLang];
+        const container = document.getElementById('categoryChips');
+        container.innerHTML = '';
+        Object.keys(langData.categories).forEach(catKey => {
+            const cat = langData.categories[catKey];
+            const chip = document.createElement('button');
+            chip.className = 'chip';
+            chip.innerHTML = `${cat.icon} ${cat.name}`;
+            chip.addEventListener('click', () => filterByCategory(catKey, chip));
+            container.appendChild(chip);
+        });
+    }
+
+    function filterByCategory(catKey, chip) {
+        document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+        if (currentCategory === catKey) {
+            currentCategory = null;
+            renderWords(allWords);
+        } else {
+            currentCategory = catKey;
+            chip.classList.add('active');
+            const langData = DICTIONARY[currentLang];
+            const categoryWords = langData.categories[catKey].words.map(w => ({...w, category: langData.categories[catKey].name}));
+            renderWords(categoryWords);
         }
-        updateUI();
     }
 
-    function saveState() {
-        const data = {
-            savedWords: Array.from(savedWords),
-            xpPoints,
-            streakCount
-        };
-        localStorage.setItem('linguaquestData', JSON.stringify(data));
+    function renderWords(words) {
+        const container = document.getElementById('wordList');
+        const empty = document.getElementById('emptyState');
+        container.innerHTML = '';
+        
+        if (words.length === 0) {
+            empty.style.display = 'block';
+            document.getElementById('resultCount').textContent = '';
+            return;
+        }
+        empty.style.display = 'none';
+        document.getElementById('resultCount').textContent = `(${words.length})`;
+        
+        words.forEach((w, idx) => {
+            const card = document.createElement('div');
+            card.className = `word-card ${savedWords.some(s => s.word === w.word) ? 'saved' : ''}`;
+            card.innerHTML = `
+                <div class="word-main">${w.word}</div>
+                <div class="word-info">
+                    <div class="word-roman">${w.roman}</div>
+                    <div class="word-meaning">${w.meaning}</div>
+                    <div class="word-category-tag">${w.category}</div>
+                </div>
+                <button class="save-btn ${savedWords.some(s => s.word === w.word) ? 'saved-active' : ''}" data-idx="${idx}">☆</button>
+            `;
+            card.addEventListener('click', () => showWordModal(w));
+            card.querySelector('.save-btn').addEventListener('click', (e) => {
+                e.stopPropagation();
+                toggleSave(w, card.querySelector('.save-btn'));
+            });
+            container.appendChild(card);
+        });
     }
 
-    // ==================== APP INITIALIZATION ====================
-    function initializeApp() {
-        createParticles();
-        setupLanguageTabs();
-        setupBottomNav();
+    function toggleSave(word, btn) {
+        const idx = savedWords.findIndex(s => s.word === word.word);
+        if (idx >= 0) {
+            savedWords.splice(idx, 1);
+            btn.classList.remove('saved-active');
+            btn.textContent = '☆';
+        } else {
+            savedWords.push(word);
+            btn.classList.add('saved-active');
+            btn.textContent = '★';
+        }
+        updateStats();
     }
 
-    function createParticles() {
+    function showWordModal(word) {
+        const modal = document.getElementById('wordModal');
+        modal.innerHTML = `
+            <div class="big-word">${word.word}</div>
+            <div class="detail-row"><strong>Romanization:</strong> ${word.roman}</div>
+            <div class="detail-row"><strong>Meaning:</strong> ${word.meaning}</div>
+            <div class="detail-row"><strong>Example:</strong> ${word.example}</div>
+            <button class="btn-close">Close</button>
+        `;
+        modal.querySelector('.btn-close').addEventListener('click', () => {
+            document.getElementById('modalOverlay').style.display = 'none';
+        });
+        document.getElementById('modalOverlay').style.display = 'flex';
+    }
+
+    function updateStats() {
+        document.getElementById('statTotal').textContent = allWords.length;
+        document.getElementById('statLearned').textContent = savedWords.length;
+        document.getElementById('statXP').textContent = savedWords.length * 10;
+        document.getElementById('statCats').textContent = Object.keys(DICTIONARY[currentLang].categories).length;
+        document.getElementById('savedBadge').textContent = savedWords.length;
+    }
+
+    function setupEventListeners() {
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase();
+            document.getElementById('clearSearch').classList.toggle('visible', query.length > 0);
+            if (query) {
+                const results = allWords.filter(w => w.word.toLowerCase().includes(query) || w.meaning.toLowerCase().includes(query) || w.roman.toLowerCase().includes(query));
+                renderWords(results);
+            } else {
+                renderWords(currentCategory ? Object.values(DICTIONARY[currentLang].categories)[0].words : allWords);
+            }
+        });
+
+        document.getElementById('clearSearch').addEventListener('click', () => {
+            document.getElementById('searchInput').value = '';
+            document.getElementById('clearSearch').classList.remove('visible');
+            renderWords(allWords);
+        });
+
+        document.getElementById('mascot').addEventListener('click', () => {
+            const messages = ["Keep going! 🚀", "You're awesome! 💪", "Let's learn! ✨", "Keep practicing! 📚"];
+            document.getElementById('mascotSpeech').textContent = messages[Math.floor(Math.random() * messages.length)];
+        });
+    }
+
+    function generateParticles() {
         const container = document.getElementById('particles');
         for (let i = 0; i < 20; i++) {
             const particle = document.createElement('div');
             particle.className = 'particle';
-            const size = Math.random() * 3 + 1;
-            const color = ['#58cc02', '#1cb0f6', '#ce82ff', '#ff9600'];
-            particle.style.width = size + 'px';
-            particle.style.height = size + 'px';
-            particle.style.background = color[Math.floor(Math.random() * color.length)];
             particle.style.left = Math.random() * 100 + '%';
-            particle.style.animationDuration = (Math.random() * 6 + 8) + 's';
+            particle.style.width = Math.random() * 4 + 2 + 'px';
+            particle.style.height = particle.style.width;
+            particle.style.background = ['#58cc02', '#1cb0f6', '#ff9600', '#ce82ff'][Math.floor(Math.random() * 4)];
+            particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
             particle.style.animationDelay = Math.random() * 2 + 's';
             container.appendChild(particle);
         }
     }
 
-    function setupLanguageTabs() {
-        document.querySelectorAll('.lang-tab').forEach(tab => {
-            tab.addEventListener('click', () => switchLanguage(tab.dataset.lang));
-        });
-    }
-
-    function setupBottomNav() {
-        document.querySelectorAll('.nav-item').forEach(item => {
-            item.addEventListener('click', () => switchTab(item.dataset.tab));
-        });
-    }
-
-    // ==================== LANGUAGE SWITCHING ====================
-    function switchLanguage(lang) {
-        currentLang = lang;
-        currentCategory = null;
-        searchQuery = '';
-        document.getElementById('searchInput').value = '';
-        
-        document.querySelectorAll('.lang-tab').forEach(tab => {
-            tab.classList.toggle('active', tab.dataset.lang === lang);
-        });
-
-        renderLanguage();
-    }
-
-    function renderLanguage() {
-        const langData = DICTIONARY[currentLang];
-        const categoryChips = document.getElementById('categoryChips');
-        categoryChips.innerHTML = '';
-
-        Object.keys(langData.categories).forEach(key => {
-            const cat = langData.categories[key];
-            const chip = document.createElement('button');
-            chip.className = 'chip';
-            chip.textContent = `${cat.icon} ${cat.name}`;
-            chip.addEventListener('click', () => selectCategory(key));
-            categoryChips.appendChild(chip);
-        });
-
-        renderWords();
-        updateStats();
-    }
-
-    // ==================== CATEGORY SELECTION ====================
-    function selectCategory(catKey) {
-        currentCategory = currentCategory === catKey ? null : catKey;
-        renderLanguage();
-    }
-
-    // ==================== WORD RENDERING ====================
-    function renderWords() {
-        const langData = DICTIONARY[currentLang];
-        const wordList = document.getElementById('wordList');
-        const emptyState = document.getElementById('emptyState');
-        const resultCount = document.getElementById('resultCount');
-        
-        let allWords = [];
-
-        if (currentCategory) {
-            const category = langData.categories[currentCategory];
-            allWords = category.words || [];
-            document.querySelector('.chip').classList.add('active');
-        } else {
-            Object.values(langData.categories).forEach(cat => {
-                allWords.push(...(cat.words || []));
-            });
-        }
-
-        // Filter by search
-        let filtered = allWords;
-        if (searchQuery) {
-            filtered = allWords.filter(word =>
-                word.word.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                word.roman.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                word.meaning.toLowerCase().includes(searchQuery.toLowerCase())
-            );
-        }
-
-        wordList.innerHTML = '';
-        resultCount.textContent = filtered.length > 0 ? `(${filtered.length})` : '';
-
-        if (filtered.length === 0) {
-            emptyState.style.display = 'block';
-        } else {
-            emptyState.style.display = 'none';
-            filtered.forEach((word, index) => {
-                const card = createWordCard(word, index);
-                wordList.appendChild(card);
-            });
-        }
-    }
-
-    function createWordCard(word, index) {
-        const card = document.createElement('div');
-        card.className = 'word-card';
-        if (savedWords.has(word.word)) card.classList.add('saved');
-        card.style.animationDelay = (index * 0.05) + 's';
-
-        const isSaved = savedWords.has(word.word);
-
-        card.innerHTML = `
-            <div class="word-main">${word.word}</div>
-            <div class="word-info">
-                <div class="word-roman">${word.roman}</div>
-                <div class="word-meaning">${word.meaning}</div>
-                <div class="word-category-tag">${DICTIONARY[currentLang].categories[currentCategory || Object.keys(DICTIONARY[currentLang].categories)[0]].name}</div>
-            </div>
-            <button class="save-btn ${isSaved ? 'saved-active' : ''}" data-word="${word.word}">
-                ${isSaved ? '⭐' : '☆'}
-            </button>
-        `;
-
-        card.addEventListener('click', (e) => {
-            if (!e.target.classList.contains('save-btn')) {
-                showWordModal(word);
-            }
-        });
-
-        card.querySelector('.save-btn').addEventListener('click', (e) => {
-            e.stopPropagation();
-            toggleSaveWord(word.word);
-        });
-
-        return card;
-    }
-
-    // ==================== SAVE/UNSAVE FUNCTIONALITY ====================
-    function toggleSaveWord(word) {
-        if (savedWords.has(word)) {
-            savedWords.delete(word);
-        } else {
-            savedWords.add(word);
-            addXP(10);
-        }
-        saveState();
-        renderWords();
-        updateUI();
-    }
-
-    // ==================== WORD DETAIL MODAL ====================
-    function showWordModal(word) {
-        const modal = document.getElementById('wordModal');
-        const overlay = document.getElementById('modalOverlay');
-        
-        modal.innerHTML = `
-            <div class="big-word">${word.word}</div>
-            <div class="detail-row"><strong>${DICTIONARY[currentLang].romanLabel}:</strong> ${word.roman}</div>
-            <div class="detail-row"><strong>Meaning:</strong> ${word.meaning}</div>
-            <div class="detail-row"><strong>Example:</strong> ${word.example}</div>
-            <button class="btn-close">Close</button>
-        `;
-
-        overlay.style.display = 'flex';
-        modal.querySelector('.btn-close').addEventListener('click', () => {
-            overlay.style.display = 'none';
-        });
-
-        overlay.addEventListener('click', (e) => {
-            if (e.target === overlay) overlay.style.display = 'none';
-        });
-    }
-
-    // ==================== STATS & UI UPDATES ====================
-    function updateStats() {
-        const langData = DICTIONARY[currentLang];
-        let totalWords = 0;
-        let totalCats = 0;
-
-        Object.values(langData.categories).forEach(cat => {
-            totalWords += cat.words ? cat.words.length : 0;
-            totalCats++;
-        });
-
-        document.getElementById('statTotal').textContent = totalWords;
-        document.getElementById('statLearned').textContent = savedWords.size;
-        document.getElementById('statXP').textContent = xpPoints;
-        document.getElementById('statCats').textContent = totalCats;
-    }
-
-    function updateUI() {
-        document.getElementById('streakCount').textContent = streakCount;
-        document.getElementById('savedBadge').textContent = savedWords.size;
-        updateStats();
-    }
-
-    function addXP(amount) {
-        xpPoints += amount;
-        const popup = document.createElement('div');
-        popup.className = 'xp-pop';
-        popup.textContent = `+${amount} XP`;
-        popup.style.left = (Math.random() * 80 + 10) + '%';
-        popup.style.top = (Math.random() * 60 + 20) + '%';
-        document.body.appendChild(popup);
-        setTimeout(() => popup.remove(), 1500);
-    }
-
-    // ==================== SEARCH FUNCTIONALITY ====================
-    const searchInput = document.getElementById('searchInput');
-    const clearSearch = document.getElementById('clearSearch');
-
-    searchInput.addEventListener('input', (e) => {
-        searchQuery = e.target.value;
-        clearSearch.classList.toggle('visible', searchQuery.length > 0);
-        renderWords();
-    });
-
-    clearSearch.addEventListener('click', () => {
-        searchQuery = '';
-        searchInput.value = '';
-        clearSearch.classList.remove('visible');
-        renderWords();
-    });
-
-    // ==================== TAB SWITCHING ====================
-    function switchTab(tab) {
-        document.querySelectorAll('.nav-item').forEach(item => {
-            item.classList.toggle('active', item.dataset.tab === tab);
-        });
-
-        // Handle different tabs here (learn, quiz, saved, flashcards)
-        if (tab === 'learn') {
-            console.log('Learn tab active');
-        } else if (tab === 'quiz') {
-            console.log('Quiz tab active');
-        } else if (tab === 'saved') {
-            console.log('Saved words tab active');
-        } else if (tab === 'flashcards') {
-            console.log('Flashcard mode');
-        }
-    }
-
-    // ==================== EVENT LISTENERS SETUP ====================
-    function setupEventListeners() {
-        document.getElementById('btnSaved').addEventListener('click', () => {
-            switchTab('saved');
-        });
-
-        document.getElementById('mascot').addEventListener('click', () => {
-            showToast("Great motivation! Keep learning! 🚀");
-        });
-
-        document.getElementById('btnStartQuiz').addEventListener('click', () => {
-            switchTab('quiz');
-            showToast("Quiz mode coming soon! 🎯");
-        });
-
-        document.getElementById('btnFlashcards').addEventListener('click', () => {
-            switchTab('flashcards');
-            showToast("Flashcard mode coming soon! 🃏");
-        });
-    }
-
-    // ==================== TOAST NOTIFICATIONS ====================
-    function showToast(message) {
-        const toast = document.getElementById('toast');
-        toast.textContent = message;
-        toast.classList.add('show');
-        setTimeout(() => {
-            toast.classList.remove('show');
-        }, 3000);
-    }
+    initApp();
 </script>
 </body>
 </html>
